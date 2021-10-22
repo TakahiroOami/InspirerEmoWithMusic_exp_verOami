@@ -24,14 +24,14 @@ logger.propagate = False
 
 #create and setup recorder
 recorder = BioDataRecorder()
-recorder.read_config("configs/pre_exp_recorder_config.json")
+recorder.read_config("configs/exp_recorder_config.json")
 recorder.set_dafault()
 logger.debug(f"create recorder")
 
 #evaluation recorder
 now = datetime.datetime.now()
-now = now.strftime('%Y-%m-&d_%H%M%S')
-eva_recorder = EvaluationRecorder(file_name="evaluation_data/" + now + "_eva_pre_exp.csv")
+now = now.strftime('%Y-%m-%d_%H%M%S')
+eva_recorder = EvaluationRecorder(file_name="evaluation_data/" + now + "_eva_kaori_exp.csv")
 logger.debug(f"create evaluation recorder")
 
 #stimulation labels
@@ -49,7 +49,7 @@ ACTUAL_PLAY = 7
 recorder.set_stimu_num(DEFAULT)
 logger.debug(f"recorder.set_stimu_num is called({DEFAULT})")
 
-STIMULATION = TEST_01   #ここを変える
+STIMULATION = TEST_02   #ここを変える
 
 FIRST_REST_TIME = 10
 REST_TIME = 10
@@ -58,11 +58,17 @@ STIMU_TIME = 15
 stimu_list = None
 
 if STIMULATION == TEST_01:
-    stimu_list = ["w02.mp3", "muon.mp3","w02.mp3","muon.mp3"]
-    FIRST_REST_TIME = 270
-    REST_TIME = 30
-    STIMU_TIME = 30
+    stimu_list = ["w02.mp3", "muon.mp3","w02.mp3","muon.mp3","w02.mp3","muon.mp3"]
+    FIRST_REST_TIME = 240
+    REST_TIME = 0
+    STIMU_TIME = 60
     
+
+if STIMULATION == TEST_02:
+    stimu_list = ["w02.mp3", "muon.mp3","w02.mp3","muon.mp3","w02.mp3","muon.mp3"]
+    FIRST_REST_TIME = 1
+    REST_TIME = 0
+    STIMU_TIME = 1
 
 
 
